@@ -4,7 +4,7 @@ The colleague's proposal reports 92% accuracy, an average judge score of 4.1, an
 
 ## The data
 
-`alerts_sample.csv` has the 50 alerts in the offline evaluation set. It was extracted on **2026-09-30**.
+`data/alerts_sample.csv` has the 50 alerts in the offline evaluation set. It was extracted on **2026-09-30**.
 
 | Column | Description |
 | --- | --- |
@@ -44,3 +44,35 @@ The colleague's proposal reports 92% accuracy, an average judge score of 4.1, an
 - You can use documentation, search, and an AI assistant. If you use an AI assistant, make sure to share it so we can see your process for collaborating with such tools. 
 - The colleague's Python script is in `colleague_script.py` if you prefer to read the code. You do not need it.
 - Talk us through what you are doing. We care about your reasoning more than about the final numbers.
+
+## Set up (optional, Python only)
+
+Skip this section if you work in R, SQL, or a spreadsheet. You need Python 3.10 or later. Either option below works on its own, so you do not need uv to use pip.
+
+### Option A: pip and venv
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate        # On Windows: .venv\Scripts\activate
+pip install -r requirements.txt
+python colleague_script.py
+```
+
+### Option B: uv
+
+```bash
+uv sync
+uv run python colleague_script.py
+```
+
+The script prints the colleague's numbers from the table above.
+
+## Project layout
+
+```
+colleague_script.py   # the colleague's script (optional)
+data/
+└── alerts_sample.csv
+pyproject.toml        # dependencies for uv
+requirements.txt      # dependencies for pip
+```

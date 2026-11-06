@@ -3,9 +3,11 @@
 It produces the offline numbers in the proposal. You do not have to use it:
 you can recompute the numbers in any language or tool you prefer.
 """
+from pathlib import Path
+
 import pandas as pd
 
-df = pd.read_csv("alerts_sample.csv")
+df = pd.read_csv(Path(__file__).parent / "data" / "alerts_sample.csv")
 
 accuracy = (df["agent_recommendation"] == df["analyst_decision"]).mean()
 
